@@ -66,6 +66,7 @@ export default {
       :image="item.file_url"
       :name="item.filename"
       :tags="item.tags"
+      :id="item.id"
     />
   </section>
 </template>

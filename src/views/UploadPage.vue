@@ -15,6 +15,7 @@ export default {
       let name = this.filename;
       var tagsRaw = this.tags.replace(', ', ',');
       var tags = tagsRaw.split(',');
+      var router = this.$router;
 
       const reader = new FileReader();
 
@@ -57,6 +58,7 @@ export default {
             console.log('success');
             message.innerHTML = 'Image successfully uploaded!';
             message.classList.add('success');
+            router.push({ path: '/' });
           } else {
             console.log('error');
             message.innerHTML = 'Something went wrong. Please try again.';
@@ -94,12 +96,13 @@ export default {
 
 <style>
 form#upload-content-container {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 form#upload-content-container > p {
