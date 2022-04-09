@@ -8,6 +8,9 @@ export default {
   },
   methods: {
     uploadFile() {
+      var message = document.getElementsByClassName(
+        'upload-response-message'
+      )[0];
       let photo = document.getElementById('image-input').files[0];
       let name = this.filename;
       var tagsRaw = this.tags.replace(', ', ',');
@@ -22,8 +25,19 @@ export default {
         },
       };
 
+      if (name == '' || photo == null) {
+        message.innerHTML = 'You have to provide both a file and a name.';
+        message.classList.add('error');
+        return;
+      }
+      message.classList.remove('success');
+      message.classList.remove('error');
+      message.innerHTML = '';
+      console.log('just before');
+
       reader.onload = function () {
-        console.log('not working');
+        console.log('just after');
+
         var binary = reader.result.replace('data:', '').replace(/^.+,/, '');
 
         requestOptions.body = JSON.stringify({
@@ -49,32 +63,15 @@ export default {
             message.classList.add('error');
           }
         });
-        reader.readAsDataURL(photo);
       };
-    },
-    validate() {
-      var message = document.getElementsByClassName(
-        'upload-response-message'
-      )[0];
-      if (
-        this.filename != '' &&
-        document.getElementById('image-input').files[0] != null
-      ) {
-        message.classList.remove('success');
-        message.classList.remove('error');
-        message.innerHTML = '';
-        this.uploadFile();
-      } else {
-        message.innerHTML = 'You have to provide both a file and a name.';
-        message.classList.add('error');
-      }
+      reader.readAsDataURL(photo);
     },
   },
 };
 </script>
 
 <template>
-  <form id="upload-content-container" @submit.prevent="validate">
+  <form id="upload-content-container" @submit.prevent="uploadFile">
     <label for="filename">Enter the file name: {{ filename }}</label>
     <input type="text" name="filename" v-model="filename" />
 
