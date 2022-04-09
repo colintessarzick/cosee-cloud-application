@@ -5,9 +5,9 @@ export default {
   props: {
     image: String,
     name: String,
-    tags: [String],
+    tags: Array,
   },
-  components: [Tag],
+  components: { Tag },
 };
 </script>
 
@@ -16,7 +16,7 @@ export default {
     <img :src="image" :alt="name" />
     <h2>{{ name }}</h2>
     <div class="image-tags" v-if="tags">
-      <Tag v-for="tag in tags" :key="tag">{{ tag }}</Tag>
+      <Tag v-for="tag in tags" :key="tag" :label="tag" />
     </div>
   </div>
 </template>
@@ -36,6 +36,8 @@ div.image-grid-item {
 div.image-grid-item > img {
   width: 100%;
   height: 100%;
+  max-height: 350px;
+  min-height: 200px;
   border-radius: 5px;
   transition: 500ms;
   object-fit: cover;
@@ -44,9 +46,10 @@ div.image-grid-item > img {
 }
 
 div.image-grid-item > h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   font-style: normal;
+  margin: 0;
 }
 
 div.image-grid-item > div {

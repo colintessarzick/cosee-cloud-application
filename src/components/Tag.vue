@@ -1,13 +1,25 @@
+<script>
+export default {
+  data() {
+    return {};
+  },
+  props: { label: String },
+};
+</script>
+
 <template>
-  <p><slot /></p>
+  <p class="tag-label">{{ label }}</p>
 </template>
 
 <style>
-p {
-  font-size: 0.8rem;
+p.tag-label {
+  font-size: 0.75rem;
   text-transform: uppercase;
-  background-color: #000;
-  color: #fff;
-  padding: 5px 8px;
+  letter-spacing: 1.28px;
+  background-color: #eaeaea;
+  color: #000;
+  padding: 5px 12px;
+  border-radius: 1rem;
+  margin: 0;
 }
 </style>

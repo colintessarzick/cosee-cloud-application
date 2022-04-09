@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <main>
@@ -8,4 +7,3 @@
     <footer></footer>
   </main>
 </template>
-
