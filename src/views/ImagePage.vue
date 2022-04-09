@@ -15,7 +15,29 @@ export default {
     id: String,
   },
   components: { Tag },
-  mounted() {},
+  mounted() {
+    var url =
+      'https://ui4nfc0db6.execute-api.eu-central-1.amazonaws.com/v1/images' +
+      window.location.pathname;
+    var requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch(url, requestOptions).then(async (data) => {
+      var object = await data.json();
+      this.name = object.body.filename;
+      this.file_url = object.body.file_url;
+      this.created = object.body.created;
+      this.updated = object.body.updated;
+      this.tags = object.body.tags;
+    });
+
+    var tagInput = document.getElementById('tag-input');
+    var tagString = this.tags.join(', ');
+    tagInput.value = tagString;
+  },
   methods: {
     deleteImage() {
       var requestOptions = {
@@ -35,6 +57,35 @@ export default {
         }
       });
     },
+    updateFields() {
+      var tagInput = document.getElementById('tag-input').value;
+      var tagsRaw = tagInput.replace(', ', ',');
+      var tagsJSON = tagsRaw.split(',');
+      var requestOptions = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: this.name,
+          tags: tagsJSON,
+        }),
+      };
+
+      var url =
+        'https://ui4nfc0db6.execute-api.eu-central-1.amazonaws.com/v1/images' +
+        window.location.pathname;
+      fetch(url, requestOptions).then(async (response) => {
+        if (response.status == 200) {
+          console.log('success');
+          var button = document.getElementById('update-button');
+          window.setTimeout(function () {
+            button.classList.remove('success');
+          }, 2500);
+          button.classList.add('success');
+        }
+      });
+    },
   },
 };
 </script>
@@ -43,11 +94,91 @@ export default {
   <div class="wrapper">
     <img :src="file_url" :alt="name" />
     <div class="meta-data">
-      <h1>{{ name }}</h1>
+      <input id="title-input" type="text" name="name" v-model="name" />
       <p>{{ created }}</p>
       <p>{{ updated }}</p>
-      <Tag v-for="tag in tags" :key="tag" :label="tag" />
+      <input id="tag-input" type="text" name="tags" v-model="tags" />
+      <button id="update-button" @click="updateFields">Save Changes</button>
+      <button id="delete-button" @click="deleteImage">Delete Image</button>
     </div>
-    <button @click="deleteImage">Delete Image</button>
   </div>
 </template>
+
+<style>
+.wrapper {
+  width: 100%;
+  max-width: 1224px;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 3rem;
+}
+.wrapper > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  background-color: beige;
+  object-fit: cover;
+  object-position: center;
+}
+.wrapper > .meta-data {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: black;
+}
+.meta-data > #title-input {
+  color: black;
+  font-size: 3rem;
+  font-weight: 500;
+  border: none;
+  box-shadow: none;
+  transition: 350ms;
+  padding: 0.25rem 0;
+  outline: none;
+}
+.meta-data > #tag-input {
+  font-size: 0.85rem;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  box-shadow: none;
+  transition: 350ms;
+  padding: 1rem 0;
+  outline: none;
+}
+.meta-data > #title-input:hover,
+.meta-data > #title-input:focus,
+.meta-data > #tag-input:hover,
+.meta-data > #tag-input:focus {
+  background-color: #ececec;
+}
+.meta-data > #update-button,
+.meta-data > #delete-button {
+  padding: 1rem 2rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.28px;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  transition: 250ms;
+}
+.meta-data > #update-button:hover {
+  background-color: #373737;
+}
+.meta-data > #delete-button {
+  background-color: #fff;
+  color: red;
+}
+.meta-data > #delete-button:hover {
+  background-color: #ffecec;
+}
+.meta-data > #update-button.success {
+  background-color: #b9ffb9;
+  color: black;
+}
+</style>
