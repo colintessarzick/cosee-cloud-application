@@ -34,10 +34,10 @@ div.image-grid-item {
 }
 
 div.image-grid-item > img {
+  max-width: 384px;
+  max-height: 216px;
   width: 100%;
   height: 100%;
-  max-height: 350px;
-  min-height: 200px;
   border-radius: 5px;
   transition: 500ms;
   object-fit: cover;
