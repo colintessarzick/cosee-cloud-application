@@ -81,8 +81,10 @@ export default {
           var button = document.getElementById('update-button');
           window.setTimeout(function () {
             button.classList.remove('success');
+            button.innerText = 'save changes';
           }, 2500);
           button.classList.add('success');
+          button.innerText = 'changes saved';
         }
       });
     },
