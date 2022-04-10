@@ -57,7 +57,7 @@ export default {
       v-on:keyup.enter="filter"
     />
 
-    <a href="/upload">Upload New File</a>
+    <a href="/upload">Upload File</a>
   </div>
   <section id="content-grid">
     <GridItem
@@ -79,28 +79,31 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid var(--cosee-c-greyscale2);
   gap: 1rem;
 }
 .searchbar > input {
   padding: 1rem 1.5rem;
   width: 100%;
   max-width: 500px;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--cosee-c-greyscale2);
   font-size: 1rem;
   border-radius: 3rem;
 }
 .searchbar > a {
-  background-color: #a5b1ff;
+  background-color: var(--cosee-c-black);
   border: none;
   outline: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 2rem;
-  color: #000;
+  color: var(--cosee-c-primary);
   text-decoration: none;
   font-size: 0.85rem;
   text-transform: capitalize;
+}
+.searchbar > input:focus {
+  outline: 2px solid var(--cosee-c-secondary);
 }
 
 #content-grid {

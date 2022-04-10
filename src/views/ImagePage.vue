@@ -145,7 +145,7 @@ export default {
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
-  background-color: beige;
+  background-color: var(--cosee-c-greyscale2);
   object-fit: cover;
   object-position: center;
 }
@@ -153,10 +153,10 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  color: black;
+  color: var(--cosee-c-black);
 }
 .meta-data > #title-input {
-  color: black;
+  color: var(--cosee-c-black);
   font-size: 3rem;
   font-weight: 500;
   border: none;
@@ -171,7 +171,7 @@ export default {
 .meta-data > #tag-input {
   font-size: 0.9rem;
   border: none;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid var(--cosee-c-greyscale2);
   box-shadow: none;
   transition: 350ms;
   padding: 1rem 0;
@@ -181,13 +181,13 @@ export default {
 .meta-data > #title-input:focus,
 .meta-data > #tag-input:hover,
 .meta-data > #tag-input:focus {
-  background-color: #ececec;
+  background-color: var(--cosee-c-greyscale2);
 }
 .meta-data > #update-button,
 .meta-data > #delete-button {
   padding: 1rem 2rem;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--cosee-c-black);
+  color: var(--cosee-c-white);
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -199,17 +199,17 @@ export default {
   transition: 250ms;
 }
 .meta-data > #update-button:hover {
-  background-color: #373737;
+  background-color: var(--cosee-c-greyscale3);
 }
 .meta-data > #delete-button {
-  background-color: #fff;
+  background-color: var(--cosee-c-white);
   color: red;
 }
 .meta-data > #delete-button:hover {
-  background-color: #ffecec;
+  background-color: #ffe9e9;
 }
 .meta-data > #update-button.success {
   background-color: #b9ffb9;
-  color: black;
+  color: var(--cosee-c-black);
 }
 </style>

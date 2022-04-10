@@ -1,3 +1,13 @@
+:root {
+  --cosee-c-primary: #d4d800;
+  --cosee-c-secondary: #48af56;
+  --cosee-c-white: #fff;
+  --cosee-c-greyscale1: #efefef;
+  --cosee-c-greyscale2: #dedede;
+  --cosee-c-greyscale3: #545454;
+  --cosee-c-black: #262626;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
