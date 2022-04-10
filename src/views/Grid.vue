@@ -90,6 +90,9 @@ export default {
   font-size: 1rem;
   border-radius: 3rem;
 }
+.searchbar > input:focus {
+  outline: 2px solid var(--cosee-c-secondary);
+}
 .searchbar > a {
   background-color: var(--cosee-c-black);
   border: none;
@@ -101,9 +104,11 @@ export default {
   text-decoration: none;
   font-size: 0.85rem;
   text-transform: capitalize;
+  transition: 250ms;
 }
-.searchbar > input:focus {
-  outline: 2px solid var(--cosee-c-secondary);
+.searchbar > a:hover {
+  background-color: var(--cosee-c-primary);
+  color: var(--cosee-c-black);
 }
 
 #content-grid {

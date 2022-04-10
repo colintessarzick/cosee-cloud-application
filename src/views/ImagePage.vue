@@ -144,7 +144,7 @@ export default {
 .wrapper > img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16/9;
+  max-height: calc(100vh - 3rem);
   background-color: var(--cosee-c-greyscale2);
   object-fit: cover;
   object-position: center;
