@@ -88,6 +88,32 @@ export default {
         }
       });
     },
+    convertToDate(unix) {
+      var a = new Date(unix * 1000);
+      var months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
+      var year = a.getFullYear();
+      var month = months[a.getMonth()];
+      var date = a.getDate();
+      var hour = a.getHours();
+      var min = a.getMinutes();
+      var sec = a.getSeconds();
+      var time =
+        date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+      return time;
+    },
   },
 };
 </script>
@@ -97,8 +123,8 @@ export default {
     <img :src="file_url" :alt="name" />
     <div class="meta-data">
       <input id="title-input" type="text" name="name" v-model="name" />
-      <p>{{ created }}</p>
-      <p>{{ updated }}</p>
+      <p v-if="created">Image uploaded: {{ convertToDate(created) }}</p>
+      <p v-if="updated">Image updated: {{ convertToDate(updated) }}</p>
       <input id="tag-input" type="text" name="tags" v-model="tags" />
       <button id="update-button" @click="updateFields">Save Changes</button>
       <button id="delete-button" @click="deleteImage">Delete Image</button>
@@ -139,8 +165,11 @@ export default {
   padding: 0.25rem 0;
   outline: none;
 }
-.meta-data > #tag-input {
+.meta-data > p {
   font-size: 0.85rem;
+}
+.meta-data > #tag-input {
+  font-size: 0.9rem;
   border: none;
   border-bottom: 1px solid lightgrey;
   box-shadow: none;
