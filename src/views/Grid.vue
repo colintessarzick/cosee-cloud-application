@@ -102,8 +102,10 @@ export default {
   border-radius: 2rem;
   color: var(--cosee-c-primary);
   text-decoration: none;
-  font-size: 0.85rem;
-  text-transform: capitalize;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.64px;
   transition: 250ms;
 }
 .searchbar > a:hover {
@@ -111,12 +113,11 @@ export default {
   color: var(--cosee-c-black);
 }
 
-#content-grid {
+section#content-grid {
   width: 100%;
-  max-width: 1224px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
-  padding: 3rem 0;
+  padding: 3rem 10%;
 }
 </style>

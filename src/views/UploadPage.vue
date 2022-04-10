@@ -34,11 +34,8 @@ export default {
       message.classList.remove('success');
       message.classList.remove('error');
       message.innerHTML = '';
-      console.log('just before');
 
       reader.onload = function () {
-        console.log('just after');
-
         var binary = reader.result.replace('data:', '').replace(/^.+,/, '');
 
         requestOptions.body = JSON.stringify({
@@ -74,19 +71,19 @@ export default {
 
 <template>
   <form id="upload-content-container" @submit.prevent="uploadFile">
-    <label for="filename">Enter the file name: {{ filename }}</label>
+    <label for="filename">Enter the file name</label>
     <input type="text" name="filename" v-model="filename" />
 
     <label for="filename">Tags (Optional)</label>
     <input type="text" name="tags" v-model="tags" />
+
+    <input type="file" id="image-input" accept="image/png, image/jpeg" />
 
     <p>
       Only images of type PNG, JPEG, JPG, and WEBP can be uploaded. Additionally
       you can add tags to your file. Tags are comma-separated e.g. "book,
       family, interior" results in 3 tags.
     </p>
-
-    <input type="file" id="image-input" />
 
     <button>Upload new image</button>
 
@@ -105,10 +102,54 @@ form#upload-content-container {
   gap: 1rem;
 }
 
+form#upload-content-container > label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.64px;
+}
+form#upload-content-container > input[type='text'] {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  margin-top: -0.5rem;
+  outline: none;
+  border: 1px solid var(--cosee-c-greyscale2);
+  box-shadow: none;
+  padding: 1rem 1.5rem;
+  transition: 500ms;
+  width: 100%;
+  max-width: 350px;
+}
+form#upload-content-container > input[type='text']:hover,
+form#upload-content-container > input[type='text']:focus {
+  background-color: var(--cosee-c-greyscale1);
+}
+
 form#upload-content-container > p {
   width: 100%;
   max-width: 600px;
   text-align: center;
+  font-size: 0.8rem;
+  line-height: 160%;
+}
+
+form#upload-content-container > button {
+  background-color: var(--cosee-c-black);
+  color: var(--cosee-c-white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.64px;
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  border: none;
+  width: 100%;
+  max-width: 350px;
+  cursor: pointer;
+  transition: 250ms;
+}
+form#upload-content-container > button:hover {
+  background-color: var(--cosee-c-greyscale3);
 }
 
 p.upload-response-message {
