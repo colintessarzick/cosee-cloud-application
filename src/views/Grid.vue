@@ -12,7 +12,7 @@ export default {
   methods: {
     filter() {
       var filterRaw = this.queryString.replace(', ', ',');
-      var query = filterRaw.split(',');
+      var query = filterRaw.toLowerCase().split(',');
       if (query[0] == '') {
         query = [];
       }

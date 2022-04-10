@@ -21,5 +21,7 @@ p.tag-label {
   padding: 5px 12px;
   border-radius: 1rem;
   margin: 0;
+  width: fit-content;
+  height: fit-content;
 }
 </style>

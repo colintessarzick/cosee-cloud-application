@@ -55,9 +55,9 @@ a.image-grid-item > h2 {
 
 a.image-grid-item > div {
   display: flex;
-  flex-direction: row;
+  flex: 1;
+  flex-wrap: wrap;
   gap: 0.75rem;
   width: 100%;
-  overflow: hidden;
 }
 </style>
