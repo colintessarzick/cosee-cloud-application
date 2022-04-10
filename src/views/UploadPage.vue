@@ -14,7 +14,7 @@ export default {
       let photo = document.getElementById('image-input').files[0];
       let name = this.filename;
       var tagsRaw = this.tags.replace(', ', ',');
-      var tags = tagsRaw.split(',');
+      var tags = tagsRaw.toLowerCase().split(',');
       var router = this.$router;
 
       const reader = new FileReader();
