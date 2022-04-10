@@ -138,7 +138,7 @@ export default {
   max-width: 1224px;
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
 }
 .wrapper > img {
