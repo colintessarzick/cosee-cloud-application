@@ -28,6 +28,7 @@ a.image-grid-item {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  height: fit-content;
   align-items: start;
   justify-content: flex-start;
   text-decoration: none;
@@ -54,7 +55,7 @@ a.image-grid-item > h2 {
 a.image-grid-item > div {
   display: flex;
   flex: 1;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   gap: 0.75rem;
   width: 100%;
 }

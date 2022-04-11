@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-  <p class="tag-label">{{ label }}</p>
+  <p v-if="label" class="tag-label">{{ label }}</p>
 </template>
 
 <style>

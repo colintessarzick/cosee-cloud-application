@@ -21,6 +21,9 @@ export default {
       this.getImages(queryJSON);
     },
     getImages(query) {
+      var overlay = document.getElementsByClassName('loading-container')[0];
+      overlay.style.display = 'flex';
+
       var requestOptions = {
         method: 'GET',
         headers: {
@@ -31,6 +34,7 @@ export default {
         'https://ui4nfc0db6.execute-api.eu-central-1.amazonaws.com/v1/images?tags=' +
         query;
       fetch(url, requestOptions).then(async (response) => {
+        overlay.style.display = 'none';
         if (response.status == 200) {
           var object = await response.json();
           this.images = object.body;
@@ -68,11 +72,16 @@ export default {
       :tags="item.tags"
       :id="item.id"
     />
+
+    <div class="loading-container">
+      <p>loading ...</p>
+    </div>
   </section>
 </template>
 
 <style>
 .searchbar {
+  z-index: 100;
   width: 100%;
   padding: 1rem;
   display: flex;
@@ -89,20 +98,22 @@ export default {
   border: 1px solid var(--cosee-c-greyscale2);
   font-size: 1rem;
   border-radius: 3rem;
+  transition: 250ms;
 }
 .searchbar > input:focus {
-  outline: 2px solid var(--cosee-c-secondary);
+  border: 1px solid var(--cosee-c-black);
+  outline: none;
 }
 .searchbar > a {
   background-color: var(--cosee-c-black);
   border: none;
   outline: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   cursor: pointer;
   border-radius: 2rem;
   color: var(--cosee-c-primary);
   text-decoration: none;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.64px;
@@ -119,5 +130,25 @@ section#content-grid {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
   padding: 3rem 10%;
+  position: relative;
+}
+
+section#content-grid > .loading-container {
+  z-index: 99;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1.28px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 </style>
