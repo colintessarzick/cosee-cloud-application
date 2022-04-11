@@ -40,6 +40,9 @@ export default {
   },
   methods: {
     deleteImage() {
+      var message = document.getElementById('delete-button');
+      message.innerText = 'Deleting ...';
+
       var requestOptions = {
         method: 'DELETE',
         headers: {
@@ -58,9 +61,12 @@ export default {
       });
     },
     updateFields() {
+      var message = document.getElementById('update-button');
+      message.innerText = 'processing';
+
       var tagInput = document.getElementById('tag-input').value;
       var tagsRaw = tagInput.replace(', ', ',');
-      var tagsJSON = tagsRaw.split(',');
+      var tagsJSON = tagsRaw.toLowerCase().split(',');
       var requestOptions = {
         method: 'PUT',
         headers: {

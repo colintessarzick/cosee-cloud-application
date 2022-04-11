@@ -8,6 +8,9 @@ export default {
   },
   methods: {
     uploadFile() {
+      var button = document.getElementById('upload-button');
+      button.innerText = 'uploading ...';
+
       var message = document.getElementsByClassName(
         'upload-response-message'
       )[0];
@@ -48,6 +51,7 @@ export default {
           'https://ui4nfc0db6.execute-api.eu-central-1.amazonaws.com/v1/upload',
           requestOptions
         ).then(async (response) => {
+          button.innerText = 'upload new image';
           var message = document.getElementsByClassName(
             'upload-response-message'
           )[0];
@@ -85,7 +89,7 @@ export default {
       family, interior" results in 3 tags.
     </p>
 
-    <button>Upload new image</button>
+    <button id="upload-button">Upload new image</button>
 
     <p class="upload-response-message"></p>
   </form>
@@ -134,7 +138,7 @@ form#upload-content-container > p {
   line-height: 160%;
 }
 
-form#upload-content-container > button {
+form#upload-content-container > button#upload-button {
   background-color: var(--cosee-c-black);
   color: var(--cosee-c-white);
   font-size: 0.75rem;
@@ -148,7 +152,7 @@ form#upload-content-container > button {
   cursor: pointer;
   transition: 250ms;
 }
-form#upload-content-container > button:hover {
+form#upload-content-container > button#upload-button:hover {
   background-color: var(--cosee-c-greyscale3);
 }
 
