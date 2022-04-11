@@ -6,6 +6,7 @@ export default {
     return {
       images: Array,
       queryString: '',
+      timer: undefined,
     };
   },
   components: { GridItem },
@@ -18,7 +19,11 @@ export default {
       }
       var queryJSON = JSON.stringify(query);
 
-      this.getImages(queryJSON);
+      clearTimeout(this.timer);
+
+      this.timer = setTimeout(() => {
+        this.getImages(queryJSON);
+      }, 750);
     },
     getImages(query) {
       var overlay = document.getElementsByClassName('loading-container')[0];
@@ -58,7 +63,7 @@ export default {
       name="filter"
       placeholder="Type the tags to filter for"
       v-model="queryString"
-      v-on:keyup.enter="filter"
+      v-on:keyup="filter"
     />
 
     <a href="/upload">Upload File</a>
