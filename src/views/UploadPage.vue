@@ -69,12 +69,38 @@ export default {
       };
       reader.readAsDataURL(photo);
     },
+    dropzone(e) {
+      e.preventDefault();
+
+      var input = document.getElementById('image-input');
+      input.files = e.dataTransfer.files;
+
+      var form = document.getElementById('upload-content-container');
+      form.classList.remove('drag-over');
+    },
+    dragOver(e) {
+      e.preventDefault();
+      var form = document.getElementById('upload-content-container');
+      form.classList.add('drag-over');
+    },
+    dragLeave(e) {
+      e.preventDefault();
+      var form = document.getElementById('upload-content-container');
+      form.classList.remove('drag-over');
+    },
   },
 };
 </script>
 
 <template>
-  <form id="upload-content-container" @submit.prevent="uploadFile">
+  <form
+    id="upload-content-container"
+    @submit.prevent="uploadFile"
+    @drop.prevent="dropzone"
+    @dragenter.prevent="dragOver"
+    @dragleave.prevent="dragLeave"
+    @dragover.prevent
+  >
     <label for="filename">Enter the file name</label>
     <input type="text" name="filename" v-model="filename" />
 
@@ -97,13 +123,18 @@ export default {
 
 <style>
 form#upload-content-container {
-  width: 100vw;
-  height: 100vh;
+  width: calc(100vw - 1rem);
+  height: calc(100vh - 1rem);
+  margin: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+form#upload-content-container.drag-over {
+  background-color: rgba(212, 216, 0, 0.25);
+  border: 0.25rem dashed var(--cosee-c-primary);
 }
 
 form#upload-content-container > label {
