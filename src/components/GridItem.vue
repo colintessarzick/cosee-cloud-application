@@ -14,7 +14,9 @@ export default {
 
 <template>
   <a class="image-grid-item" :href="id">
-    <img :src="image" :alt="name" />
+    <div class="image">
+      <img :src="image" :alt="name" />
+    </div>
     <h2>{{ name }}</h2>
     <div class="image-tags" v-if="tags">
       <Tag v-for="tag in tags" :key="tag" :label="tag" />
@@ -35,14 +37,22 @@ a.image-grid-item {
   color: black;
 }
 
-a.image-grid-item > img {
+a.image-grid-item > .image {
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 5px;
-  transition: 500ms;
+  background-color: #d9d9d9;
+  overflow: hidden;
+}
+a.image-grid-item > .image > img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  background-color: #d9d9d9;
+  transition: 500ms;
+}
+a.image-grid-item:hover > .image > img {
+  scale: 1.05;
 }
 
 a.image-grid-item > h2 {
