@@ -61,7 +61,7 @@ export default {
     <input
       type="text"
       name="filter"
-      placeholder="Type the tags to filter for"
+      placeholder="Filter by tags or name"
       v-model="queryString"
       v-on:keyup="filter"
     />
