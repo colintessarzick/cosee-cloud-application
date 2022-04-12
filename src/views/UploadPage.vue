@@ -111,7 +111,7 @@ export default {
 
     <p>
       Only images of type PNG, JPEG, JPG, and WEBP can be uploaded. Additionally
-      you can add tags to your file. Tags are comma-separated e.g. "book,
+      you can add tags to your image. Tags are comma-separated e.g. "book,
       family, interior" results in 3 tags.
     </p>
 
