@@ -1,4 +1,7 @@
 # cosee-application
+[![Build Pipeline](https://github.com/colintessarzick/cosee-cloud-application/actions/workflows/build-pipeline.yml/badge.svg)](https://github.com/colintessarzick/cosee-cloud-application/actions/workflows/build-pipeline.yml)
+[![CodeQL](https://github.com/colintessarzick/cosee-cloud-application/actions/workflows/codeql.yml/badge.svg)](https://github.com/colintessarzick/cosee-cloud-application/actions/workflows/codeql.yml)
+[![Release Pipeline](https://github.com/colintessarzick/cosee-cloud-application/actions/workflows/release.yml/badge.svg)](https://github.com/colintessarzick/cosee-cloud-application/actions/workflows/release.yml)
 
 This template should help get you started developing with Vue 3 in Vite.
 
