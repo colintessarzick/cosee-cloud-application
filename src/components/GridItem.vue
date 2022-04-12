@@ -49,7 +49,7 @@ a.image-grid-item > .image > img {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: 750ms;
+  transition: 500ms;
 }
 a.image-grid-item:hover > .image > img {
   scale: 1.05;
