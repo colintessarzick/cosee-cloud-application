@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import Grid from '../views/Grid.vue';
+import Gallery from '../views/Gallery.vue';
 import UploadPage from '../views/UploadPage.vue';
 import ImagePage from '../views/ImagePage.vue';
 
@@ -9,7 +9,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Grid,
+      component: Gallery,
     },
     {
       path: '/upload',
