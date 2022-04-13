@@ -75,32 +75,35 @@ export default {
       var input = document.getElementById('image-input');
       input.files = e.dataTransfer.files;
 
-      var form = document.getElementById('upload-content-container');
-      form.classList.remove('drag-over');
+      let dropzone = document.getElementsByClassName('drag-container')[0];
+      dropzone.style.zIndex = 0;
+      dropzone.classList.remove('drag-over');
     },
     dragOver(e) {
       e.preventDefault();
-      var form = document.getElementById('upload-content-container');
-      form.classList.add('drag-over');
+      var dropzone = document.getElementsByClassName('drag-container')[0];
+      dropzone.style.zIndex = 99;
+      dropzone.classList.add('drag-over');
     },
     dragLeave(e) {
       e.preventDefault();
-      var form = document.getElementById('upload-content-container');
-      form.classList.remove('drag-over');
+      var dropzone = document.getElementsByClassName('drag-container')[0];
+      dropzone.style.zIndex = 0;
+      dropzone.classList.remove('drag-over');
     },
   },
 };
 </script>
 
 <template>
-  <form
-    id="upload-content-container"
-    @submit.prevent="uploadFile"
+  <div
+    class="drag-container"
     @drop.prevent="dropzone"
     @dragenter.prevent="dragOver"
     @dragleave.prevent="dragLeave"
     @dragover.prevent
-  >
+  ></div>
+  <form id="upload-content-container" @submit.prevent="uploadFile">
     <label for="filename">Enter the file name</label>
     <input type="text" name="filename" v-model="filename" />
 
@@ -123,16 +126,23 @@ export default {
 
 <style>
 form#upload-content-container {
-  width: calc(100vw - 1rem);
-  height: calc(100vh - 1rem);
   margin: 0.5rem;
+  padding: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-form#upload-content-container.drag-over {
+div.drag-container {
+  width: calc(100vw - 1rem);
+  height: calc(100vh - 1rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0.5rem;
+}
+div.drag-container.drag-over {
   background-color: rgba(212, 216, 0, 0.25);
   border: 0.25rem dashed var(--cosee-c-primary);
 }
