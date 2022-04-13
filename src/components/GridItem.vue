@@ -40,7 +40,6 @@ a.image-grid-item {
 a.image-grid-item > .image {
   width: 100%;
   aspect-ratio: 16/9;
-  border-radius: 5px;
   background-color: #d9d9d9;
   overflow: hidden;
 }
