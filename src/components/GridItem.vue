@@ -13,19 +13,19 @@ export default {
 </script>
 
 <template>
-  <a class="image-grid-item" :href="id">
-    <div class="image">
+  <div class="image-grid-item">
+    <a class="image" :href="id">
       <img :src="image" :alt="name" />
-    </div>
+    </a>
     <h2>{{ name }}</h2>
     <div class="image-tags" v-if="tags">
       <Tag v-for="tag in tags" :key="tag" :label="tag" />
     </div>
-  </a>
+  </div>
 </template>
 
 <style>
-a.image-grid-item {
+div.image-grid-item {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -37,31 +37,31 @@ a.image-grid-item {
   color: black;
 }
 
-a.image-grid-item > .image {
+div.image-grid-item > .image {
   width: 100%;
   aspect-ratio: 16/9;
   background-color: #d9d9d9;
   overflow: hidden;
 }
-a.image-grid-item > .image > img {
+div.image-grid-item > .image > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   transition: 500ms;
 }
-a.image-grid-item:hover > .image > img {
+a.image:hover > img {
   scale: 1.05;
 }
 
-a.image-grid-item > h2 {
+div.image-grid-item > h2 {
   font-size: 1.25rem;
   font-weight: 500;
   font-style: normal;
   margin: 0;
 }
 
-a.image-grid-item > div {
+div.image-grid-item > div {
   display: flex;
   flex: 1;
   flex-flow: row wrap;

@@ -38,15 +38,31 @@ export default {
       var url =
         'https://ui4nfc0db6.execute-api.eu-central-1.amazonaws.com/v1/images?tags=' +
         query;
-      fetch(url, requestOptions).then(async (response) => {
-        overlay.style.display = 'none';
-        if (response.status == 200) {
-          var object = await response.json();
-          this.images = object.body;
-        } else {
-          console.error('error occured');
-        }
-      });
+      fetch(url, requestOptions)
+        .then(async (response) => {
+          overlay.style.display = 'none';
+          if (response.status == 200) {
+            var object = await response.json();
+            this.images = object.body;
+          } else {
+            console.error('error occured');
+          }
+        })
+        .then((data) => {
+          let tags = document.getElementsByClassName('tag-label');
+          for (var i = 0; i < tags.length; i++) {
+            let tag = tags[i];
+            tag.addEventListener('click', (e) => {
+              this.clickTag(tag.textContent);
+            });
+          }
+        });
+    },
+    clickTag(label) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      this.queryString = label;
+      this.filter();
     },
   },
   mounted() {
@@ -132,7 +148,7 @@ export default {
 section#content-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   gap: 3rem;
   padding: 3rem 10%;
   position: relative;
