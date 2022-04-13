@@ -160,6 +160,7 @@ export default {
   flex-direction: column;
   gap: 1rem;
   color: var(--cosee-c-black);
+  padding: 5%;
 }
 .meta-data > #title-input {
   color: var(--cosee-c-black);
