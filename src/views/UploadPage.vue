@@ -75,18 +75,21 @@ export default {
       var input = document.getElementById('image-input');
       input.files = e.dataTransfer.files;
 
-      var form = document.getElementsByClassName('drag-container')[0];
-      form.classList.remove('drag-over');
+      let dropzone = document.getElementsByClassName('drag-container')[0];
+      dropzone.style.zIndex = 0;
+      dropzone.classList.remove('drag-over');
     },
     dragOver(e) {
       e.preventDefault();
-      var form = document.getElementsByClassName('drag-container')[0];
-      form.classList.add('drag-over');
+      var dropzone = document.getElementsByClassName('drag-container')[0];
+      dropzone.style.zIndex = 99;
+      dropzone.classList.add('drag-over');
     },
     dragLeave(e) {
       e.preventDefault();
-      var form = document.getElementsByClassName('drag-container')[0];
-      form.classList.remove('drag-over');
+      var dropzone = document.getElementsByClassName('drag-container')[0];
+      dropzone.style.zIndex = 0;
+      dropzone.classList.remove('drag-over');
     },
   },
 };
@@ -123,8 +126,6 @@ export default {
 
 <style>
 form#upload-content-container {
-  width: calc(100vw - 1rem);
-  height: calc(100vh - 1rem);
   margin: 0.5rem;
   padding: 5%;
   display: flex;
@@ -140,7 +141,6 @@ div.drag-container {
   top: 0;
   left: 0;
   margin: 0.5rem;
-  z-index: 999;
 }
 div.drag-container.drag-over {
   background-color: rgba(212, 216, 0, 0.25);
