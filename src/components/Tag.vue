@@ -18,7 +18,7 @@ p.tag-label {
   text-transform: uppercase;
   letter-spacing: 1.28px;
   background-color: var(--cosee-c-greyscale1);
-  color: var(--cosee-c-grayscale3);
+  color: var(--cosee-c-greyscale3);
   padding: 5px 12px;
   border-radius: 1rem;
   margin: 0;

@@ -32,6 +32,12 @@ export default {
       if (name == '' || photo == null) {
         message.innerHTML = 'You have to provide both a file and a name.';
         message.classList.add('error');
+        button.innerText = 'upload new image';
+        return;
+      } else if (name.length < 4) {
+        message.innerHTML = 'The file name must be at least 4 characters long.';
+        message.classList.add('error');
+        button.innerText = 'upload new image';
         return;
       }
       message.classList.remove('success');
