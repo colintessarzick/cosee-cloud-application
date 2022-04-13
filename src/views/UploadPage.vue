@@ -168,7 +168,8 @@ form#upload-content-container > input[type='text'] {
 }
 form#upload-content-container > input[type='text']:hover,
 form#upload-content-container > input[type='text']:focus {
-  background-color: var(--cosee-c-greyscale1);
+  background-color: rgba(212, 216, 0, 0.15);
+  border: 1px solid var(--cosee-c-primary);
 }
 
 form#upload-content-container > p {

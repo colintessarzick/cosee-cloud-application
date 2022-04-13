@@ -184,10 +184,12 @@ export default {
   outline: none;
 }
 .meta-data > #title-input:hover,
+.meta-data > #tag-input:hover {
+  background-color: rgba(212, 216, 0, 0.15);
+}
 .meta-data > #title-input:focus,
-.meta-data > #tag-input:hover,
 .meta-data > #tag-input:focus {
-  background-color: var(--cosee-c-greyscale2);
+  background-color: rgba(212, 216, 0, 0.25);
 }
 .meta-data > #update-button,
 .meta-data > #delete-button {

@@ -17,7 +17,7 @@ p.tag-label {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.28px;
-  background-color: #efefef;
+  background-color: rgba(212, 216, 0, 0.25);
   color: var(--cosee-c-greyscale3);
   padding: 5px 12px;
   border-radius: 1rem;

@@ -100,13 +100,13 @@ export default {
   padding: 1rem 1.5rem;
   width: 100%;
   max-width: 500px;
-  border: 1px solid var(--cosee-c-greyscale2);
+  border: 2px solid var(--cosee-c-greyscale1);
   font-size: 1rem;
   border-radius: 3rem;
   transition: 250ms;
 }
 .searchbar > input:focus {
-  border: 1px solid var(--cosee-c-black);
+  border: 2px solid var(--cosee-c-primary);
   outline: none;
 }
 .searchbar > a {
